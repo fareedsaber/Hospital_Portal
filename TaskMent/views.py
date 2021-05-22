@@ -15,7 +15,7 @@ from .decorators import *
 # Create your views here.
 @login_required()
 def tasks (request):     
-    gettsk=Tasks.objects.all()  
+    gettsk=Tasks.objects.filter(user=request.user) 
     Open=Tasks.objects.filter(Status='Open').count()
     compete=Tasks.objects.filter(Status='Complete').count()
     Struggling=Tasks.objects.filter(Status='Struggling').count()
@@ -64,10 +64,11 @@ def AddTask(request):
     if request.method=='POST': 
              
             addtask=AddTasks(request.POST)              
-            if addtask.is_valid():
-               user = request.user
-               addtask = AddTasks(user)              
-               addtask.save()               
+            if addtask.is_valid():               
+                           
+              instance=addtask.save(commit=False) 
+              instance.user=request.user
+              instance.save()              
             return redirect('tmg:tasks')      
         
     context={

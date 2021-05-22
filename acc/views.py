@@ -30,9 +30,9 @@ def User_login(request):
     }    
     return render(request,'acc/Userlogin.html',context)
 
-# @login_required()
-# def UserProfile(request):    
-#     return render(request,'acc/UserProfile.html')
+@login_required()
+def UserProfile(request):    
+    return render(request,'acc/UserProfile.html')
 
 @login_required()
 def UserProfile(request):    
@@ -78,25 +78,25 @@ def userLogout(request):
 
 
 
-def tasks_slug (request,slug):  
-    tsk_s=profile.objects.get(slug=slug)   
-    # gettsk=Tasks.objects.all()  
-    # Open=Tasks.objects.filter(Status='Open').count()
-    # compete=Tasks.objects.filter(Status='Complete').count()
-    # Struggling=Tasks.objects.filter(Status='Struggling').count()
-    # In_Progress=Tasks.objects.filter(Status='In_Progress').count() 
-    # searchfilter=TaskFilter(request.GET,queryset=gettsk)
-    # gettsk=searchfilter.qs
+# def tasks_slug (request,slug):  
+#     tsk_s=profile.objects.get(slug=slug)   
+#     # gettsk=Tasks.objects.all()  
+#     # Open=Tasks.objects.filter(Status='Open').count()
+#     # compete=Tasks.objects.filter(Status='Complete').count()
+#     # Struggling=Tasks.objects.filter(Status='Struggling').count()
+#     # In_Progress=Tasks.objects.filter(Status='In_Progress').count() 
+#     # searchfilter=TaskFilter(request.GET,queryset=gettsk)
+#     # gettsk=searchfilter.qs
     
-    context={
-        'tas_slug':tsk_s,
-        # 'gettsk':gettsk,
-        # 'GetAllTasks':AddTasks(),
-        # 'Struggling':Struggling,
-        # 'Open':Open,
-        # 'compete':compete,
-        # 'In_Progress':In_Progress,
-        # 'myTaskFilter':searchfilter,
+#     context={
+#         'tas_slug':tsk_s,
+#         # 'gettsk':gettsk,
+#         # 'GetAllTasks':AddTasks(),
+#         # 'Struggling':Struggling,
+#         # 'Open':Open,
+#         # 'compete':compete,
+#         # 'In_Progress':In_Progress,
+#         # 'myTaskFilter':searchfilter,
         
-        }           
-    return render(request,'tasks/tasks_slug.html',context)
+#         }           
+#     return render(request,'tasks/tasks_slug.html',context)

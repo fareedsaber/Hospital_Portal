@@ -37,27 +37,19 @@
 
                                 {{signup.password2|as_crispy_field}}
                             </div>
-                            <div class="row">
-                                <div class="col-sm-6">
 
-                                    {{signup.DepN|as_crispy_field}}
-                                </div>
-                                <div class="col-sm-6">
 
-                                    {{signup.secN|as_crispy_field}}
-                                </div>
+                            <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign Up</button>
+                            <div class="social-login-content">
 
-                                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign Up</button>
-                                <div class="social-login-content">
-
-                                </div>
-                                <div class="register-link m-t-15 text-center">
-                                    <p>I have account ? <a href="{% url 'acc:ulogin' %}"> Sign In Here</a></p>
-                                </div>
+                            </div>
+                            <div class="register-link m-t-15 text-center">
+                                <p>I have account ? <a href="{% url 'acc:ulogin' %}"> Sign In Here</a></p>
+                            </div>
                 </form>
                 </div>
                 </div>
-                </div>
             </div>
+        </div>
 
-            {% endblock contents %}
+        {% endblock contents %}

@@ -7,13 +7,12 @@ from .models import *
 from django.contrib.auth.forms import  UserCreationForm
 from django.utils import timezone
 
-class AddTasks(forms.ModelForm):    
-       
+class AddTasks(forms.ModelForm):        
     class Meta:
         model = Tasks
         fields=[
                         
-            'user',
+            # 'user',
             'DepName',
             'sec',
                 'TaskOwner',
@@ -27,6 +26,7 @@ class AddTasks(forms.ModelForm):
                 'Comment'
                 ]
         widgets={
+            # 'user':forms.Select(attrs={'class':'form-control'}),
        
             'DepName':forms.Select(attrs={'class':'form-control'}),
             'sec':forms.Select(attrs={'class':'form-control'}),

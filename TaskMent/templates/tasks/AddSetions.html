@@ -1,7 +1,11 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
 <div class="container">
-
+    <div>
+        <button type="button" class="btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off">
+        <h5 class="border border-primary" >Add A New Section</h5>
+      </button>
+    </div>
     <form method="POST">
         {% csrf_token %} {{form}}
 </div>

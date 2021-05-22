@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container">
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="card" style="width: 40rem;">
+
+            <div class="card-body">
+                <h5 class="card-title "></h5>
+                {% comment %}
+                <p class="card-text text text-danger">Sure, you want to delete that object?</p> {% endcomment %}
+                <div class="alert alert-danger" role="alert">
+                    Sure, you want to delete that object?
+                </div>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Dpartment : {{form.DepName}}</li>
+
+            </ul>
+
+            <div class="card-body">
+                <a href="{ % url 'tmg:Depdelete' form.id % }" class="card-link"><button type="submit" class="btn btn-danger">Delete</button></a>
+                <a href="{% url 'tmg:alldep'%}" class="card-link btn btn-info">Back </a>
+
+            </div>
+        </div>
+    </form>
+
+</div>
+{% endblock content %}

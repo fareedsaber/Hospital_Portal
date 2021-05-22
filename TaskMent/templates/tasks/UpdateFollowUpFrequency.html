@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<<div class="container">
+
+    <form method="POST">
+        {% csrf_token %} {{form}}
+
+        </div>
+
+        <button type="submit" class="btn btn-success">UPDATE</button>
+        <a href="{ % url 'tmg:AllTaskOwner' % }"><button  class="btn btn-success">Back</button></a>
+
+        </div>
+    </form>
+    </div>
+
+    </div>
+
+
+    {% endblock content %}

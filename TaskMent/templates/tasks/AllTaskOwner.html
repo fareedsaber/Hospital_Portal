@@ -1,0 +1,69 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+
+<div class="container">
+    <div class="signup pt-5 pl-5">
+        <!-- Animated -->
+        <div class="animated fadeIn">
+            <!-- Widgets  -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-five">
+                                <div class="stat-icon dib flat-color-4">
+                                    <i class="pe-7s-users"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="text-left dib">
+                                        <div class="stat-text"><span class="count">{{contSection}}</span></div>
+                                        <div class="stat-heading">Task Owner</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="table pl-2 pr-3 pt-2">
+                    <a href="{% url 'tmg:addto' %}" class="btn btn-success">Add TaskOwner </a>
+                    <div class="card-body--">
+                        <div class="table-stats order-table ov-h">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+
+                                        <th scope="col">Task Owner </th>
+
+                                        <th scope="col">Functions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for x in getSections %}
+                                    <tr>
+
+                                        <td>{{x.id}}</td>
+                                        <td>{{x.TOName}}</td>
+
+                                        <td>
+                                            <a href="{% url 'tmg:toupdate' x.id %}" class="badge badge-pill badge-info">Update </a>
+                                            <a href="{% url 'tmg:todelete' x.id %}" class="badge badge-pill badge-danger">Delete </a>
+
+                                        </td>
+
+
+
+
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {% endblock content %}

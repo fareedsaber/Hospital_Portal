@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+ {% load static %} 
+ {% block content %}
+<div class="container">
+
+ <form method="POST"  >
+ {% csrf_token %}        
+        <div class="card" style="width: 40rem;">  
+  
+  <div class="card-body">
+    <h5 class="card-title "></h5>
+    {% comment %} <p class="card-text text text-danger" >Sure, you want to delete that object?</p> {% endcomment %}
+  <div class="alert alert-danger" role="alert">
+  Sure, you want to delete that object?
+</div>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">user : {{form.user}}</li>
+    <li class="list-group-item">Department : {{form.DepName}}</li>
+    <li class="list-group-item">TaskOwner : {{form.TaskOwner}}</li>
+    <li class="list-group-item">TaskSituation : {{form.TaskSituation}}</li>
+    <li class="list-group-item">MonitoringTool : {{form.MonitoringTool}}</li>
+    <li class="list-group-item">Follow Up Frequency :{{form.FOF}}</li>
+    <li class="list-group-item">Status : {{form.Status}}</li>
+    <li class="list-group-item">TaskDate : {{form.TaskDate}}</li>
+    <li class="list-group-item">DueDate : {{form.DueDate}}</li>
+    <li class="list-group-item">Comments : {{form.Comment}}</li>
+  </ul>
+
+  <div class="card-body">
+    <a href="{ % url 'tmg:deletetask' form.id % }" class="card-link"><button type="submit" class="btn btn-danger">Delete</button></a>
+  <a href="{% url 'tmg:tasks'%}" class="card-link btn btn-info">Back </a>
+
+  </div>
+</div>
+    </form>
+    
+</div>
+    {% endblock content %}
+
+
+
+    

@@ -1,0 +1,173 @@
+{% extends 'base.html' %} {% load static %} {% comment %} {% load crispy_forms_tags %} {% endcomment %} {% block content %}
+
+<div class="container">
+
+    <div class="signup pt-5 pl-5">
+
+        <!-- Animated -->
+        <div class="animated fadeIn">
+
+            <!-- Widgets  -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-five">
+                                <div class="stat-icon dib flat-color-1">
+                                    <i class="pe-7s-cash"></i>
+                                </div>
+
+                                <div class="stat-content">
+                                    <div class="text-left dib">
+                                        <div class="stat-text"><span class="count">{{Open}}</span></div>
+                                        <div class="stat-heading">Open</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-five">
+                                <div class="stat-icon dib flat-color-2">
+                                    <i class="pe-7s-cart"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="text-left dib">
+                                        <div class="stat-text"><span class="count">{{Struggling}}</span></div>
+                                        <div class="stat-heading">Struggling</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-five">
+                                <div class="stat-icon dib flat-color-3">
+                                    <i class="pe-7s-browser"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="text-left dib">
+                                        <div class="stat-text"><span class="count">{{compete}}</span></div>
+                                        <div class="stat-heading">compete</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-five">
+                                <div class="stat-icon dib flat-color-4">
+                                    <i class="pe-7s-users"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="text-left dib">
+                                        <div class="stat-text"><span class="count">{{In_Progress}}</span></div>
+                                        <div class="stat-heading">In_Progress</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Widgets -->
+            <!--  Traffic  -->
+
+
+        </div>
+
+    </div>
+
+
+    <div class="col-12 col-md-3 col-xl-2 bd-sidebar ">
+        <form class=" bd-search d-flex align-items-center ">
+            <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
+                <div class="container-fluid bg-3 text-right " >    
+                   
+                        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 " >
+                            <div class="col w3-col l3 m3 s12" >
+                              <div class="p-8 border border-primary  "style="padding: 15px 20px; margin:10px 20px "> {{myTaskFilter.form}} 
+                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></button>
+                            </div>
+                            </div>
+                        </form>
+                        </div>
+                   
+    </div>
+   
+    <div class="table pl-2 pr-3 pt-2 table table-striped">
+
+        <a href="{% url 'tmg:addtask' %}" class="btn btn-success">Add Task </a>
+        <div class="card-body--">
+            <div class="table-stats order-table ov-h">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">user</th>
+                            <th scope="col">Status</th>
+
+                            <th scope="col">Department</th>
+                            <th scope="col">FollowUpFrequency</th>
+                            <th scope="col">TaskOwner</th>
+                            <th scope="col">MonitoringTool</th>
+                            <th scope="col">DueDate</th>
+                            <th scope="col">TaskDate</th>
+
+                            <th scope="col">Functions</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for x in gettsk %}
+                        <tr>
+                            <td>{{x.user}}</td>
+                            <td>
+                                <span class="badge badge-pill badge-info">{{x.Status}}</span>
+            </td>
+            <td>{{x.DepName}}</td>
+            <td>{{x.FOF}}</td>
+            <td>{{x.TaskOwner}}</td>
+
+
+            <td>{{x.MonitoringTool}}</td>
+            <td>{{x.TaskDate}}</td>
+            <td>{{x.DueDate}}</td>
+
+
+
+            <td>
+                <a href="{% url 'tmg:taskupdate' x.id %}" class="badge badge-pill badge-info">Update </a>
+                <a href="{% url 'tmg:deletetask' x.id %}" class="badge badge-pill badge-danger">Delete </a>
+
+            </td>
+
+
+
+
+
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+    </div>
+</div>
+</div>
+
+{% comment %} end container {% endcomment %}
+</div>
+
+{% endblock content %}

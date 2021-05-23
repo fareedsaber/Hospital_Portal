@@ -2,7 +2,7 @@ from django.db.models.fields.related import ForeignKey
 from django.forms import fields
 from django.forms.widgets import EmailInput, PasswordInput
 from django import forms
-from django.contrib.auth.models import  User
+from django.contrib.auth.models import User
 from .models import models, profile
 from django.contrib.auth.forms import  UserCreationForm
 from django.utils import timezone
@@ -46,7 +46,7 @@ class UpdateUserForm(forms.ModelForm):
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model= profile
-        fields=['FullName','Mobile','image','slug','Address']
+        fields=['FullName','Mobile','image','slug','Address','DepNameD','secS','userType']
         
         
         

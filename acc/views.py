@@ -4,14 +4,11 @@ from django.http import request
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from .models import *
-from .forms import Login_Form,UpdateUserForm,UserCreationForm,UpdateProfileForm
+from .forms import *
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from .decorators import *
-from TaskMent .filters import*
-from TaskMent.models  import*
-from TaskMent.views  import*
 
 # @notLoggedUsers
 def User_login(request):
@@ -20,9 +17,10 @@ def User_login(request):
         username=request.POST['username']
         password=request.POST['password']
         user=authenticate(request,username=username,password=password)
-        if user is not  None:
+        if user is not  None :
             login(request,user)
             return redirect('tmg:dash')
+        
        
     log=Login_Form()   
     context={
@@ -35,7 +33,8 @@ def UserProfile(request):
     return render(request,'acc/UserProfile.html')
 
 @login_required()
-def UserProfile(request):    
+def UserProfile(request): 
+    prof=profile.objects.all()   
     user_form=UpdateUserForm(instance=request.user)
     update_profile=UpdateProfileForm(instance=request.user.profile)
     if request.method=='POST':        
@@ -45,8 +44,8 @@ def UserProfile(request):
         if user_form.is_valid and update_profile.is_valid:  
             user_form.save()        
             update_profile.save()
-            return redirect('tmg:dash')         
-    return render(request,'acc/UserProfile.html',{'updateuser':user_form,'updateprofile':update_profile},)
+            return redirect('tmg:tasks')         
+    return render(request,'acc/UserProfile.html',{'updateuser':user_form,'updateprofile':update_profile,'prof':prof})
 
 # @notLoggedUsers
 def SignUp(request):
@@ -57,13 +56,11 @@ def SignUp(request):
             form = UserCreationForm(request.POST)
             if form.is_valid():
                 form.save()
-                username = form.cleaned_data.get('username')       
-
-                raw_password = form.cleaned_data.get('password1')               
-
+                username = form.cleaned_data.get('username')  
+                raw_password = form.cleaned_data.get('password1') 
                 user = authenticate(username=username, password=raw_password)
                 login(request, user)
-                return redirect('acc:ulogin')
+                return redirect('acc:UserProfile')
             else:
                 form = UserCreationForm()
                 return render (request,'acc/Userlogin.html',{'signup':UserCreationForm})

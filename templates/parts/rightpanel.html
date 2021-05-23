@@ -90,15 +90,14 @@
                     <div class="user-area dropdown float-right">
 
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           {% if updateprofile.image %}
-                            <img class="user-avatar rounded-circle" src="{{updateprofile.image}}" alt="User">
-                        {% else %}
-                            <img class="user-avatar rounded-circle" src="{% static 'images/admin.jpg' %}" alt="User">
-                         {% endif %}
-                        </a>
+                            <span class="name float-left">{{request.user}}</span> {% comment %} {% for user.profile.image in imgg %} {% if imgg.image %}
 
+                            <!-- <img class="user-avatar rounded-circle" src="{{imgg.image.url}}" alt="User"> {% else %}
+                            <img class="user-avatar rounded-circle" src="{% static 'images/admin.jpg' %}" alt="User"> {% endif %} -->
+                        </a>
+                        {% endfor %} {% endcomment %}
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="{% url 'acc:UserProfile'%}"><i class="fa fa- user"></i>My Profile</a>
+                            <!-- {% comment %} <a class="nav-link" href="{% url 'acc:UserProfile'%}"><i class="fa fa- user"></i>My Profile</a> {% endcomment %} -->
 
                             <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
 

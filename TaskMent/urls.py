@@ -6,10 +6,13 @@ app_name='tmg'
 urlpatterns = [
     
     path('',views.dashbord,name='dash'),
+    path('AllTasks/' ,views.AllTasks,name='AllTasks'),
+
     path('tasks/' ,views.tasks,name='tasks'),
     path('addtask/',views.AddTask,name='addtask'),
     path('taskupdate/<str:pk>',views.TaskUpdate,name='taskupdate'),
     path('delete/<str:pk>',views.deletetask,name='deletetask'),
+    
     path('dep/',views.AllDepartment,name='alldep'),
     path('adddep/',views.AddDepartment,name='adddep'),
     path('DepUpdate/<str:pk>',views.DepUpdate,name='DepUpdate'),

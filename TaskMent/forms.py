@@ -48,7 +48,7 @@ class AddTDep(forms.ModelForm):
         model = Department
         fields=['DepName']
         widgets={
-            'DepName': forms.TextInput(attrs={'class':'form-control'})
+            'DepName':forms.TextInput(attrs={'class':'form-control'}),
         }
 
 class AddSectionsForm(forms.ModelForm) :    

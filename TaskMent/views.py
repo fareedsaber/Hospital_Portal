@@ -10,7 +10,29 @@ from django.contrib.auth.decorators import login_required
 from .decorators import *
 # from acc.models import *
 
-
+@login_required()
+@allowedgroup(allweduser=['admin'])
+def AllTasks (request):     
+    gettsk=Tasks.objects.all()
+    Open=Tasks.objects.filter(Status='Open').count()
+    compete=Tasks.objects.filter(Status='Complete').count()
+    Struggling=Tasks.objects.filter(Status='Struggling').count()
+    In_Progress=Tasks.objects.filter(Status='In_Progress').count() 
+    searchfilter=TaskFilter(request.GET,queryset=gettsk)
+    gettsk=searchfilter.qs
+    
+    
+    context={
+        'gettsk':gettsk,
+        'GetAllTasks':AddTasks(),
+        'Struggling':Struggling,
+        'Open':Open,
+        'compete':compete,
+        'In_Progress':In_Progress,
+        'myTaskFilter':searchfilter,
+        
+        }           
+    return render(request,'tasks/tasks.html',context)
 
 # Create your views here.
 @login_required()
@@ -127,7 +149,7 @@ def AddDepartment(request):
         
         'form':AddTDep()
     }
-    return render(request ,'tasks/addtasks.html',context)   
+    return render(request ,'tasks/addDep.html',context)   
 @login_required()
 @allowedgroup(allweduser=['admin']) 
 def DepUpdate(request,pk):

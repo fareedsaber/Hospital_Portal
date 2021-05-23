@@ -1,10 +1,13 @@
-{% extends 'parts/base.html' %} {% load static %} {% load crispy_forms_tags %} {% block contents %}
+{% extends 'parts/base.html' %}
+ {% load static %} 
+ {% load crispy_forms_tags %}
+  {% block contents %}
 <div class="sufee-login d-flex align-content-center flex-wrap">
     <div class="container">
         <div class="login-content">
             <div class="login-logo">
                 <a href="index.html">
-                    <img class="align-content" src="{% static 'images/1.png'%}" alt="">
+                    <img class="align-content" src="{% static 'images/logo_2.png'%}" alt="">
                 </a>
             </div>
             <div class="login-form">
@@ -14,9 +17,11 @@
                     <div class="form-group">
                         {{signup.username|as_crispy_field}}
                     </div>
+
                     <div class="form-group">
                         {{signup.email|as_crispy_field}}
                     </div>
+
                     <br>
 
                     <div class="row">
